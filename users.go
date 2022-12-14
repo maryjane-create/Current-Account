@@ -2,10 +2,11 @@ package main
 
 import (
 	"golang.org/x/crypto/bcrypt"
+	"helpers"
 	"time"
 )
 
-func Login(username string, pass string) map[string]interface{} {
+func LoginUser(username string, pass string) map[string]interface{} {
 
 	db := helpers.ConnectDB()
 	user := &interfaces.User{}

@@ -14,6 +14,10 @@ type Login struct {
 	Password string
 }
 
+func NewLogin(username string, password string) *Login {
+	return &Login{Username: username, Password: password}
+}
+
 type ErrResponse struct {
 	Message string
 }
