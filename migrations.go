@@ -1,14 +1,15 @@
 package main
 
 import (
+	"Maryjane_Roava_Assessment/helpers"
+	"Maryjane_Roava_Assessment/interfaces"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"helpers"
 )
 
 func connectDB() *gorm.DB {
 	db, err := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=bankapp password=postgres sslmode=disable")
-	HandleErr(err)
+	helpers.HandleErr(err)
 	return db
 }
 

@@ -1,6 +1,8 @@
-package main
+package api
 
 import (
+	"Maryjane_Roava_Assessment/helpers"
+	"Maryjane_Roava_Assessment/users"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
@@ -29,7 +31,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	var formattedBody Login
 	err = json.Unmarshal(body, &formattedBody)
 	helpers.HandleErr(err)
-	login := users.Login(formattedBody.Username, formattedBody.Password)
+	login := users.LoginUser(formattedBody.Username, formattedBody.Password)
 
 	if login["message"] == "all is fine" {
 		resp := login

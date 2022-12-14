@@ -1,8 +1,11 @@
-package main
+package users
 
 import (
+	"Maryjane_Roava_Assessment/helpers"
+	"Maryjane_Roava_Assessment/interfaces"
+	"github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
-	"helpers"
+
 	"time"
 )
 

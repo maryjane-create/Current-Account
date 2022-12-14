@@ -1,6 +1,8 @@
 package main
 
-import "api"
+import (
+	"Maryjane_Roava_Assessment/api"
+)
 
 func main() {
 	// migrations.Migrate()
