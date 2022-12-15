@@ -2,14 +2,26 @@ package api
 
 import (
 	"Maryjane_Roava_Assessment/helpers"
+	"Maryjane_Roava_Assessment/interfaces"
 	"Maryjane_Roava_Assessment/users"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
+	"github.com/jinzhu/gorm"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
+
+var DB *gorm.DB
+var err error
+
+func userDetails(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var currentAccountCustomers []interfaces.CurrentAccountCustomer
+	DB.Find(&currentAccountCustomers)
+	json.NewEncoder(w).Encode(currentAccountCustomers)
+}
 
 type Login struct {
 	Username string
@@ -41,10 +53,11 @@ func login(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(resp)
 	}
 }
-
 func StartApi() {
 	router := mux.NewRouter()
 	router.HandleFunc("/login", login).Methods("POST")
+	router.HandleFunc("/user", userDetails).Methods("GET")
+
 	fmt.Println("App is working on port :8888")
 	log.Fatal(http.ListenAndServe(":8888", router))
 

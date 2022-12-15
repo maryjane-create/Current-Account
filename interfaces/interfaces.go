@@ -2,6 +2,11 @@ package interfaces
 
 import "github.com/jinzhu/gorm"
 
+type CurrentAccountCustomer struct {
+	gorm.Model
+	CustomerID    string `json:"customerID"`
+	initialCredit int    `json:"initialCredit"`
+}
 type User struct {
 	gorm.Model
 	Username string

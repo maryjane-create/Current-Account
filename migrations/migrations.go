@@ -1,4 +1,4 @@
-package main
+package migrations
 
 import (
 	"Maryjane_Roava_Assessment/helpers"
@@ -6,6 +6,18 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
+
+func CreateCurrentAccount(customerID string, initialCredit uint) (string, uint, int) {
+
+	db := connectDB()
+	currentAccountUser := &[2]interfaces.User{}
+	for i := 0; i < len(currentAccountUser); i++ {
+		generatedPassword := helpers.HashAndSalt([]byte(currentAccountUser[i].Username))
+		currentUser := &interfaces.User{Username: currentAccountUser[i].Username, Email: currentAccountUser[i].Email, Password: generatedPassword}
+		db.Create(&currentUser)
+	}
+	return customerID, initialCredit, len(currentAccountUser)
+}
 
 func connectDB() *gorm.DB {
 	db, err := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=bankapp password=postgres sslmode=disable")
