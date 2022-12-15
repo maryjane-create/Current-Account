@@ -7,16 +7,27 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
-func CreateCurrentAccount(customerID string, initialCredit uint) (string, uint, int) {
+func ConnectDB() *gorm.DB {
+	db, err := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=bankapp password=postgres sslmode=disable")
+	HandleErr(err)
+	return db
+}
 
-	db := connectDB()
-	currentAccountUser := &[2]interfaces.User{}
-	for i := 0; i < len(currentAccountUser); i++ {
-		generatedPassword := helpers.HashAndSalt([]byte(currentAccountUser[i].Username))
-		currentUser := &interfaces.User{Username: currentAccountUser[i].Username, Email: currentAccountUser[i].Email, Password: generatedPassword}
-		db.Create(&currentUser)
+func HandleErr(err error) {
+	if err != nil {
+		panic(err.Error())
 	}
-	return customerID, initialCredit, len(currentAccountUser)
+}
+
+func CreateCurrentAccount(customerID string, initialCredit uint) string {
+	db, _ := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=bankapp password=postgres sslmode=disable")
+	newCustomer := CreateCurrentAccount(customerID, initialCredit)
+	if db.Model(&newCustomer).Where("customerID=?", customerID).Updates(&newCustomer).RowsAffected == 0 {
+		db.Create(&newCustomer)
+		return customerID
+	}
+	return "error"
+
 }
 
 func connectDB() *gorm.DB {
@@ -40,14 +51,4 @@ func createAccounts() {
 		db.Create(&account)
 	}
 	defer db.Close()
-}
-
-func Migrate() {
-	User := &interfaces.User{}
-	Account := &interfaces.Account{}
-	db := connectDB()
-	db.AutoMigrate(&User, &Account)
-	defer db.Close()
-
-	createAccounts()
 }
