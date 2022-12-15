@@ -37,13 +37,6 @@ func login(w http.ResponseWriter, r *http.Request) {
 		resp := login
 		json.NewEncoder(w).Encode(resp)
 	} else {
-
-	}
-
-	if login["message"] == "all is fine" {
-		resp := login
-		json.NewEncoder(w).Encode(resp)
-	} else {
 		resp := ErrResponse{Message: "Wrong username or password"}
 		json.NewEncoder(w).Encode(resp)
 	}
