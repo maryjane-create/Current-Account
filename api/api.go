@@ -1,6 +1,7 @@
 package api
 
 import (
+	"Maryjane_Roava_Assessment/users"
 	"fmt"
 	"github.com/gorilla/mux"
 	"log"
@@ -15,10 +16,15 @@ func UserDetails(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateCurrentAccount() {
+	customers := users.ExistingCustomers
+	customers = append(customers, users.ExistingCustomer{})
+	for _ = range customers {
+		{
 
-	if u {
+		}
 
 	}
+
 }
 
 type ErrResponse struct {

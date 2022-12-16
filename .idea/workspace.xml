@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5db62eff-d5ba-48ca-9bf7-c4a78dc1acfb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test/test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/api.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/helpers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/interfaces.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/migrations.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/users/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/users/users.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +142,7 @@
       <workItem from="1671018830459" duration="3299000" />
       <workItem from="1671055707576" duration="2073000" />
       <workItem from="1671111401585" duration="8562000" />
-      <workItem from="1671121997518" duration="7872000" />
+      <workItem from="1671121997518" duration="10350000" />
     </task>
     <servers />
   </component>

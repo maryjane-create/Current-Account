@@ -11,5 +11,5 @@ type CurrentAccountUser struct {
 	newBalance   int    `json:"newBalance"`
 }
 
-var existingCustomers []ExistingCustomer
+var ExistingCustomers []ExistingCustomer
 var CurrentAccountUsers []CurrentAccountUser
