@@ -26,7 +26,7 @@ func UserDetails(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func CreateCurrentAccount(customer ExistingUser) CurrentAccountUser {
+func CreateCurrentAccount(customer interface{}) CurrentAccountUser {
 	var CurrentAccountUsers []CurrentAccountUser
 	currentAccountUser := CurrentAccountUser(customer)
 	CurrentUsers := append(CurrentAccountUsers, currentAccountUser)
