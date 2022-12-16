@@ -1,7 +1,6 @@
 package api
 
 import (
-	"Maryjane_Roava_Assessment/users"
 	"fmt"
 	"github.com/gorilla/mux"
 	"log"
@@ -10,21 +9,29 @@ import (
 
 var err error
 
+type ExistingUser struct {
+	customerName  string `json:"customerName"`
+	customerID    string `json:"customerID"`
+	initialCredit int    `json:"initialCredit"`
+}
+
+type CurrentAccountUser struct {
+	customerName  string `json:"customerName"`
+	customerID    string `json:"customerID"`
+	initialCredit int    `json:"initialCredit"`
+}
+
 func UserDetails(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 }
 
-func CreateCurrentAccount() {
-	customers := users.ExistingCustomers
-	customers = append(customers, users.ExistingCustomer{})
-	for _ = range customers {
-		{
-
-		}
-
-	}
-
+func CreateCurrentAccount(customer ExistingUser) CurrentAccountUser {
+	var CurrentAccountUsers []CurrentAccountUser
+	currentAccountUser := CurrentAccountUser(customer)
+	CurrentUsers := append(CurrentAccountUsers, currentAccountUser)
+	fmt.Println(CurrentAccountUsers, CurrentUsers)
+	return currentAccountUser
 }
 
 type ErrResponse struct {
