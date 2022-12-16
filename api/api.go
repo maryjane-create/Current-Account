@@ -1,32 +1,24 @@
 package api
 
 import (
-	"Maryjane_Roava_Assessment/interfaces"
-	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
-	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
 )
 
-var DB *gorm.DB
 var err error
 
 func UserDetails(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var currentAccountCustomers []interfaces.CurrentAccountCustomer
-	DB.Find(&currentAccountCustomers)
-	json.NewEncoder(w).Encode(currentAccountCustomers)
+
 }
 
-type Login struct {
-	Username string
-	Password string
-}
+func CreateCurrentAccount() {
 
-func NewLogin(username string, password string) *Login {
-	return &Login{Username: username, Password: password}
+	if u {
+
+	}
 }
 
 type ErrResponse struct {
